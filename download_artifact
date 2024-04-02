@@ -7,7 +7,7 @@ pipeline {
                 script {
                     // Prompt user for input
                     def userInput = input(
-                        id: 'http://65.2.176.249:8081/repository/sample-releases',
+                        id: '65.2.176.249:8081',
                         message: 'sample-releases',
                         parameters: [
                             string(defaultValue: '65.2.176.249:8081', description: 'Nexus URL', name: 'nexus'),
