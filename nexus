@@ -30,7 +30,7 @@ pipeline {
                       type: 'war'
                          ]
                 ], 
-credentialsId: 'jemkins',
+credentialsId: 'nexus',
 groupId: 'com.boxfuse.samples',
 nexusUrl: '65.2.176.249:8081',
 nexusVersion: 'nexus3',
