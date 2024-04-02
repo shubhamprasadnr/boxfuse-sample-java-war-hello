@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Download Artifact') {
+            steps {
+                script {
+                    // Prompt user for input
+                    def userInput = input(
+                        id: 'jenkins',
+                        message: 'sample-releases',
+                        parameters: [
+                            string(defaultValue: '65.2.176.249:8081', description: 'Nexus URL', name: 'nexus'),
+                            string(defaultValue: 'http://65.2.176.249:8081/repository/sample-releases', description: 'Repository', name: 'REPOSITORY'),
+                            string(defaultValue: 'com.boxfuse.samples', description: 'Group ID', name: 'GROUP_ID'),
+                            string(defaultValue: 'hello', description: 'Artifact ID', name: 'ARTIFACT_ID'),
+                            string(defaultValue: '1.0.0', description: 'Version', name: 'VERSION'),
+                            string(defaultValue: '/var/lib/jenkins', description: 'Destination Directory', name: 'DESTINATION_DIR')
+                        ]
+                    )
+
+                    // Download the artifact using curl
+                    def artifactUrl = "${userInput.NEXUS_URL}/repository/${userInput.REPOSITORY}/${userInput.GROUP_ID}/${userInput.ARTIFACT_ID}/${userInput.VERSION}/${userInput.ARTIFACT_ID}-${userInput.VERSION}.jar"
+                    sh "curl -o ${userInput.DESTINATION_DIR}/${userInput.ARTIFACT_ID}-${userInput.VERSION}.jar ${artifactUrl}"
+                }
+            }
+        }
+    }
+}
