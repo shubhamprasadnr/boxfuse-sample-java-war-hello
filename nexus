@@ -13,12 +13,7 @@ pipeline {
                 }
             }
          }
-        stage("Testing") {
-            steps {
-                echo "Test Runs"
-            
-            }
-        }
+        
         stage("Build") {
             steps {
                 sh "mvn clean package"
@@ -30,4 +25,5 @@ pipeline {
                 nexusArtifactUploader artifacts: [[artifactId: 'hello', classifier: '', file: 'target/hello-1.0.0.war', type: 'war']], credentialsId: 'nexus', groupId: 'com.boxfuse.samples', nexusUrl: '65.2.176.249', nexusVersion: 'nexus3', protocol: 'http', repository: 'http://65.2.176.249:8081/repository/sample-releases', version: '1.0.0'
             }
         }
-        
+     }
+}
