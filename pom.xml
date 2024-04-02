@@ -26,17 +26,6 @@
         </dependency>
     </dependencies>
     <build>
- <!-- Distribution Management for deploying artifacts -->
-    <distributionManagement>
-        <snapshotRepository>
-            <id>nexusRepo</id>
-            <url>http://65.2.176.249:8081/repository/sample-snapshots/</url>
-        </snapshotRepository>
-        <repository>
-            <id>nexusRepo</id>
-            <url>http://65.2.176.249:8081/repository/sample-releases/</url>
-        </repository>
-    </distributionManagement>
 
         <plugins>
 		<plugin>
@@ -61,4 +50,15 @@
             </plugin>
         </plugins>
     </build>
+	 <!-- Distribution Management for deploying artifacts -->
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexusRepo</id>
+            <url>http://65.2.176.249:8081/repository/sample-snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexusRepo</id>
+            <url>http://65.2.176.249:8081/repository/sample-releases/</url>
+        </repository>
+    </distributionManagement>
 </project>
