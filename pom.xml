@@ -37,7 +37,6 @@
             <url>http://65.2.176.249:8081/repository/sample-releases/</url>
         </repository>
     </distributionManagement>
-</project>
 
         <plugins>
 		<plugin>
